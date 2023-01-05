@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: rgb(250, 194, 194);
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; } 
+
+.heading{
+    font-size: 1.5rem;
+    letter-spacing: .1em;
+    font-weight: bolder;
+    font-family: 'Ramaraja', serif;
+    margin: 10px;
+    color: black;
+}
+
+
+.contain{
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top:5vh;
+}
+.form{
+    width:  98%;
+    min-height: 85vh;
+    height: fit-content;
+    border-radius: 5px;
+    margin: 0 1%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    border: rgb(230, 230, 230) 3px solid;
+}
+.grid{
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: auto  auto;
+    grid-column-gap: 2%;
+}
+mat-hint{
+    color: red;
+}
+
+
+th{
+    cursor: pointer;
+}
+.title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+thead{
+    background-color: rgb(94, 85, 85);
+    color: white;
+    border: 1px solid white;
+}
+.table {
+    width: 98%;
+    border-right:hidden;
+    border-collapse:separate;
+    border-spacing:0 10px;
+}
+
+tbody>tr{
+    background-color: white;
+}
+tr{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}

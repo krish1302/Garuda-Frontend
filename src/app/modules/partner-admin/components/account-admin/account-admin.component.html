@@ -1,0 +1,111 @@
+<div class="contain">
+    <div class="form">
+        <div class="title">
+            <b class="heading">Account Admin Table</b>
+            <button class="btn btn-outline-success" (click)="openCreate()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</button>
+        </div>
+        
+        <table class="table  table-striped">
+            <thead>
+              <tr>
+                <td scope="col">Name</td>
+                <td scope="col">Address</td>
+                <td scope="col">PAN No</td>
+                <td scope="col">GST No</td>
+                <td scope="col">CIN</td>
+                <td scope="col">Contact Name</td>
+                <td scope="col">Contact No</td>
+                <td scope="col">Contact Email</td>
+                <td scope="col">Update</td>
+                <td scope="col">Delete</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of accounts">
+                <th scope="row" (click)="goToAccountUser(d.ACC_ID)">{{d.ACC_NAME}}</th>
+                <td>{{d.ACC_ADDRESS}}</td>
+                <td>{{d.ACC_PAN}}</td>
+                <td>{{d.ACC_GST}}</td>
+                <td>{{d.ACC_CIN}}</td>
+                <td>{{d.ACC_CONTACT_NAME}}</td>
+                <td>{{d.ACC_CONTACT_NO}}</td>
+                <td>{{d.ACC_CONTACT_EMAIL}}</td>
+                <td (click)="update(d.ACC_ID)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-gear" style="color: navy;"></i></td>
+                <td (click)="delete(d.ACC_ID)"><i class='fas fa-trash-alt' style="color: red;"></i></td>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <b style="border-bottom: 1px solid orange;color: orange;">Account Form</b>
+                <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="accForm">
+                    
+                    <div class="grid">
+                        <input type="text" style="display: none;" formControlName="acc_id">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account Name</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_name">
+                            <mat-hint>{{hint.acc_name}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account Address</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_address">
+                            <mat-hint>{{hint.acc_address}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account Pancard No</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_pan">
+                            <mat-hint>{{hint.acc_pan}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account GST No</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_gst">
+                            <mat-hint>{{hint.acc_gst}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account CIN No</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_cin">
+                            <mat-hint>{{hint.acc_cin}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Contact Name</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_contact_name">
+                            <mat-hint>{{hint.acc_contact_name}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Contact No</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_contact_no">
+                            <mat-hint>{{hint.acc_contact_no}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Contact Email</mat-label>
+                            <input matInput placeholder="Please enter User ID" formControlName="acc_contact_email">
+                            <mat-hint>{{hint.acc_contact_email}}</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button *ngIf="create"  class="btn btn-outline-info" (click)="createAccount()">Create</button>
+                <button *ngIf="!create" class="btn btn-outline-warning"  (click)="updateAccount()">Update</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+

@@ -1,0 +1,78 @@
+<div class="contain">
+  <div class="form">
+      <div class="title">
+        <label class="heading"> User Camera Map Table</label>
+        <div style="width: 30%;display: flex;justify-content: space-around;">
+          <button class="btn btn-outline-secondary" (click)="goBack()">Go Back</button>
+          <button class="btn btn-outline-success"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</button>
+        </div>
+      </div>
+      <div class="title" style="flex-direction: column;align-items: flex-start;font-size: large;padding-left: 2%;">
+        <b>Account User</b> 
+        <label>ID: {{accountAdmin[0].USR_ID}}</label>
+        <label>Name:{{accountAdmin[0].USR_NAME}}</label>
+      </div>
+      <table class="table">
+          <thead>
+            <tr>
+              <td scope="col">USER ID</td>
+              <td scope="col">Camera ID</td>
+              <td scope="col">Delete</td>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let d of userCameras">
+              <ng-container *ngFor="let u of users">
+                <tr *ngIf="d.CUM_USR_ID == u.USR_ID">
+                  <td scope="row">{{d.CUM_USR_ID}}</td>
+                  <td>{{d.CUM_CAM_ID}}</td>
+                  <td (click)="deleteUserCamera(d.CUM_USR_ID, d.CUM_CAM_ID)"><i class='fas fa-trash-alt' style="color: red;"></i></td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+        <div style="width: 20%;display: flex;align-items: center;justify-content: space-around;">
+          
+        </div>   
+  </div>
+
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+              <b style="border-bottom: 1px solid orange;color: orange;">User Camera Map Form</b>
+              <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="userCameraForm" style="display: flex; flex-direction: column;">
+                  <mat-form-field appearance="fill">
+                      <mat-label>User ID</mat-label>
+                      <mat-select formControlName="usr_id">
+                        <div *ngFor="let usr of users">
+                          <mat-option value="'{{usr.USR_ID}}'">{{usr.USR_ID}}</mat-option>
+                        </div>
+                      </mat-select>
+                      <mat-hint>{{hint.usr_id}}</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                      <mat-label>Camera ID</mat-label>
+                      <mat-select formControlName="cam_id">
+                        <div *ngFor="let cam of cameras">
+                          <mat-option value="'{{cam.CAM_ID}}'">{{cam.CAM_ID}}</mat-option>
+                        </div>
+                      </mat-select>
+                      <mat-hint>{{hint.cam_id}}</mat-hint>
+                  </mat-form-field>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button class="btn btn-success"  (click)="createUserCamera()">Create</button> 
+          </div>
+          </div>
+      </div>
+  </div>
+   
+</div>

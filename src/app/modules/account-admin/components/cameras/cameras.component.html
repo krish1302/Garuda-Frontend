@@ -1,0 +1,125 @@
+
+<div class="contain">
+    <div class="form">
+        <div class="title">
+            <b class="heading"> CAMERA Table</b>
+            <div style="width: 30%;display: flex;justify-content: space-around;">
+                <button class="btn btn-outline-secondary" (click)="goBack()">Go Back</button>
+                <button class="btn btn-success" (click)="create = true" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</button>
+            </div>
+        </div>
+        <div class="title" style="flex-direction: column;align-items: flex-start;font-size: large;padding-left: 2%;">
+            <b>Account User</b> 
+            <label>ID: {{accountAdmin[0].USR_ID}}</label>
+            <label>Name:{{accountAdmin[0].USR_NAME}}</label>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <td scope="col">CAMERA ID</td>
+                <td scope="col">CAMERA USERNAME</td>
+                <td scope="col">CAMERA PASSWORD</td>
+                <td scope="col">CAMERA PORT</td>
+                <td scope="col">DVR IP ADDRESS</td>
+                <td scope="col">CHANNEL</td>
+                <td scope="col">POC</td>
+                <td scope="col">LOCATION</td>
+                <td scope="col">ALARM CODE</td>
+                <td scope="col">FPS</td>
+                <td scope="col">Update</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of cameras">
+                <th scope="row">{{d.CAM_ID}}</th>
+                <td>{{d.CAM_USERNAME}}</td>
+                <td>{{d.CAM_PASSWORD}}</td>
+                <td>{{d.CAM_PORT}}</td>
+                <td>{{d.CAM_DVR_IP}}</td>
+                <td>{{d.CAM_CHANNEL}}</td>
+                <td>{{d.CAM_POC}}</td>
+                <td>{{d.CAM_LOCATION}}</td>
+                <td>{{d.CAM_ALARM_CODE}}</td>
+                <td>{{d.CAM_FPS}}</td>
+                <td (click)="update(d.CAM_ID)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-gear" style="color: navy;"></i></td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <b style="border-bottom: 1px solid orange;color: orange;">Camera Form</b>
+            <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="cameraForm">
+                
+                <div class="grid">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Camera DVR IP address</mat-label>
+                        <input matInput placeholder="Please enter User Name" formControlName="cam_username">
+                        <mat-hint>{{hint.cam_username}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Camera DVR IP address</mat-label>
+                        <input matInput placeholder="Please enter User Name" formControlName="cam_password">
+                        <mat-hint>{{hint.cam_password}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Camera DVR IP address</mat-label>
+                        <input matInput placeholder="Please enter User Name" formControlName="cam_port">
+                        <mat-hint>{{hint.cam_port}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Camera DVR IP address</mat-label>
+                        <input matInput placeholder="Please enter User Name" formControlName="cam_dvr_ip">
+                        <mat-hint>{{hint.cam_dvr_ip}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Channel no</mat-label>
+                        <input matInput placeholder="Please enter User Password" formControlName="cam_channel">
+                        <mat-hint>{{hint.cam_channel}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Camera POC</mat-label>
+                        <input matInput placeholder="Please enter User Mobile no" formControlName="cam_poc">
+                        <mat-hint>{{hint.cam_poc}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Location</mat-label>
+                        <input matInput placeholder="Please enter User Designation" formControlName="cam_location">
+                        <mat-hint>{{hint.cam_location}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Alarm Code</mat-label>
+                        <input matInput placeholder="Please enter User Email" formControlName="cam_alarm_code">
+                        <mat-hint>{{hint.cam_alarm_code}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Frame per second</mat-label>
+                        <input matInput placeholder="Please enter User ID" formControlName="cam_fps">
+                        <mat-hint>{{hint.cam_fps}}</mat-hint>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-success"  *ngIf="create"  (click)="createCamera()">Create</button>
+            <button *ngIf="!create" class="btn" style="color: white;background-color: palevioletred;"  (click)="updateCamera()">Update</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+    
+</div>
+
+
+
+

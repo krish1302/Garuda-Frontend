@@ -1,0 +1,39 @@
+<div class="contain">
+    <div class="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Camera ID</mat-label>
+            <mat-select [(ngModel)]="camera_id">
+                <div *ngFor="let usr of userCameras">  
+                <mat-option *ngIf="usr.CUM_USR_ID == user" value="{{usr.CUM_CAM_ID}}">{{usr.CUM_CAM_ID}}</mat-option>
+                </div>
+            </mat-select>
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <button mat-raised-button style="background-color: brown;color: white;" (click)="openCamera()">Open</button>
+
+        <b>Selected Camera</b>
+        <b *ngIf="camera">Camera id : {{camera[0].CAM_ID}}</b>
+        <b *ngIf="camera">Camera Location :{{camera[0].CAM_LOCATION}}</b>
+
+        <div style="width: 100%; display: flex;justify-content: space-evenly;margin: 2%;">
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <b>Object Detection</b>
+                <img *ngIf="camera" src="http://localhost:5000/object_detection/{{camera_id}}" width="500px" height="500px">
+            </div>
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <b>Loiering Detection</b>
+                <img *ngIf="camera" src="http://localhost:5000/loitering/{{camera_id}}" width="500px" height="500px">
+            </div>
+        </div>
+        <div style="width: 100%; display: flex;justify-content: space-evenly;margin: 2%;">
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <b>Vehicle Detection</b>
+                <img *ngIf="camera" src="http://localhost:5000/car_detection/{{camera_id}}" width="500px" height="500px">
+            </div>
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <b>Line Detection</b>
+                <img *ngIf="camera" src="http://localhost:5000/line_detection/{{camera_id}}" width="500px" height="500px">
+            </div>
+        </div>
+    </div>
+</div>

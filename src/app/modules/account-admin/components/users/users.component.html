@@ -1,0 +1,103 @@
+<div class="contain">
+    <div class="form">
+        <div class="title">
+            <label class="heading"> User Table</label>
+            <div style="width: 30%;display: flex;justify-content: space-around;">
+                <button class="btn btn-outline-success" (click)="openCreate()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</button>
+            <button class="btn btn-outline-secondary"  (click)="goToCamera()"><i class="fa fa-camera" aria-hidden="true"></i></button>
+            <button class="btn btn-outline-secondary"  (click)="goToCameraMap()"><i class="fas fa-user-plus"></i><i class="fa fa-camera" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <div class="title" style="flex-direction: column;align-items: flex-start;font-size: large;padding-left: 2%;">
+            <b>Account User</b> 
+            <label>ID: {{accountAdmin[0].USR_ID}}</label>
+            <label>Name:{{accountAdmin[0].USR_NAME}}</label>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <td scope="col">USER ID</td>
+                <td scope="col">NAME</td>
+                <td scope="col">PASSWORD</td>
+                <td scope="col">MOBILE NO</td>
+                <td scope="col">EMAIL</td>
+                <td scope="col">DESIGNATION</td>
+                <td scope="col">Update</td>
+                <td scope="col">Delete</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of Users">
+                <td scope="row">{{d.USR_ID}}</td>
+                <td>{{d.USR_NAME}}</td>
+                <td>{{d.USR_PASSWORD}}</td>
+                <td>{{d.USR_MOBILE}}</td>
+                <td>{{d.USR_EMAIL}}</td>
+                <td>{{d.USR_DESIGNATION}}</td>
+                <td (click)="update(d.USR_ID)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-gear" style="color: navy;"></i></td>
+                <td (click)="delete(d.USR_ID)"><i class='fas fa-trash-alt' style="color: red;"></i></td>
+              </tr>
+            </tbody>
+        </table>  
+    </div>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <b style="border-bottom: 1px solid orange;color: orange;"> Form</b>
+            <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="userForm">
+                
+                <div class="grid">
+                    <mat-form-field appearance="fill" *ngIf="create">
+                        <mat-label>User ID</mat-label>
+                        <input matInput placeholder="Please enter User ID" formControlName="usr_id">
+                        <mat-hint>{{hint.usr_id}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User Name</mat-label>
+                        <input matInput placeholder="Please enter User Name" formControlName="usr_name">
+                        <mat-hint>{{hint.usr_name}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User Password</mat-label>
+                        <input matInput placeholder="Please enter User Password" formControlName="usr_password">
+                        <mat-hint>{{hint.usr_password}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User mobile</mat-label>
+                        <input matInput placeholder="Please enter User Mobile no" formControlName="usr_mobile">
+                        <mat-hint>{{hint.usr_mobile}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User email</mat-label>
+                        <input matInput placeholder="Please enter User Email" formControlName="usr_email">
+                        <mat-hint>{{hint.usr_email}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User Designation</mat-label>
+                        <input matInput placeholder="Please enter User Designation" formControlName="usr_designation">
+                        <mat-hint>{{hint.usr_designation}}</mat-hint>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="can" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-success"  *ngIf="create" (click)="createUser()">Create</button>
+            <button *ngIf="!create" class="btn" style="color: white;background-color: palevioletred;"  (click)="updateUser()">Update</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+    
+</div>
+
+
+
+

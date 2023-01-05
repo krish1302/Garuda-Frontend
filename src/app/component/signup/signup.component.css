@@ -1,0 +1,56 @@
+.signup{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2%;
+}
+.contain{
+    position: abosulte;
+    width:100%;
+    height:100%;
+    display:flex;
+}
+label{
+    cursor: pointer;
+}
+.card{
+    width: 48%;
+    margin: 3vh 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: whitesmoke;
+    border: rgb(230, 230, 230) 3px solid;
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+mat-hint{
+    color: red;
+}
+mat-form-field, mat-label{
+    color: black;
+}
+
+mat-card-title{
+    padding: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color: black;
+}
+@media only screen and (max-width:800px) {
+    .signup{
+        background-color: red;
+    }
+}
+
+.log-btn{
+    background-color: rgb(94, 85, 85);
+    border: 2px solid rgb(230, 230, 230);
+    color: rgb(230, 230, 230);
+    width: 200px;
+    height: 7vh;
+    font-weight: bolder;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

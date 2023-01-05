@@ -1,0 +1,13 @@
+details{
+    width: 80%;
+    min-height: 50px;
+    height: fit-content;
+    padding: 20px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow:  5px 5px 20px #a6a6a6,
+                -5px -5px 20px #ffffff;
+}
+mat-hint{
+    color: red;
+}

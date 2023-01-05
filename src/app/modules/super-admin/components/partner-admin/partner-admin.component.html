@@ -1,0 +1,111 @@
+<div class="contain">
+    <div class="form">
+        <div class="title">
+            <b class="heading">Partner Admin Table</b>
+            <button class="btn btn-outline-success" (click)="openCreate()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</button>
+        </div> 
+        <table class="table">
+            <thead>
+              <tr>
+                <td scope="col">Name</td>
+                <td scope="col">Address</td>
+                <td scope="col">PAN No</td>
+                <td scope="col">GST No</td>
+                <td scope="col">CIN</td>
+                <td scope="col">Contact Name</td>
+                <td scope="col">Contact No</td>
+                <td scope="col">Contact Email</td>
+                <td scope="col">Update</td>
+                <td scope="col">Delete</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of partners">
+                <th scope="row" (click)="goToPartnerUser(d.PTR_ID)"><a>{{d.PTR_NAME}}</a></th>
+                <td>{{d.PTR_ADDRESS}}</td>
+                <td>{{d.PTR_PAN_NO}}</td>
+                <td>{{d.PTR_GST}}</td>
+                <td>{{d.PTR_CIN}}</td>
+                <td>{{d.PTR_CONTACT_NAME}}</td>
+                <td>{{d.PTR_CONTACT_NO}}</td>
+                <td>{{d.PTR_CONTACT_EMAIL}}</td>
+                <td (click)="update(d.PTR_ID)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-gear" style="color: navy;"></i></td>
+                <td (click)="delete(d.PTR_ID)"><i class='fas fa-trash-alt' style="color: red;"></i></td>
+              </tr>
+             
+            </tbody>
+          </table>
+          
+    </div>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <b style="border-bottom: 1px solid orange;color: orange;">Partner Form</b>
+            <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="ptrForm">
+                
+                <div class="grid">
+                    <input type="text" style="display: none;" formControlName="ptr_id">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner Name</mat-label>
+                        <input matInput placeholder="Please enter Partner Name" formControlName="ptr_name">
+                        <mat-hint>{{hint.ptr_name}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner Address</mat-label>
+                        <input matInput placeholder="Please enter Partner Address" formControlName="ptr_address">
+                        <mat-hint>{{hint.ptr_address}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner Pan No</mat-label>
+                        <input matInput placeholder="Please enter Partner Pan_No" formControlName="ptr_pan_no">
+                        <mat-hint>{{hint.ptr_pan_no}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner GST No</mat-label>
+                        <input matInput placeholder="Please enter GST_No" formControlName="ptr_gst">
+                        <mat-hint>{{hint.ptr_gst}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner CIN No</mat-label>
+                        <input matInput placeholder="Please enter CIN_No" formControlName="ptr_cin">
+                        <mat-hint>{{hint.ptr_cin}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact Name</mat-label>
+                        <input matInput placeholder="Please enter Contact_Name" formControlName="ptr_contact_name">
+                        <mat-hint>{{hint.ptr_contact_name}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact No</mat-label>
+                        <input matInput placeholder="Please enter Contact_No" formControlName="ptr_contact_no">
+                        <mat-hint>{{hint.ptr_contact_no}}</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact Email</mat-label>
+                        <input matInput placeholder="Please enter Contact_Email" formControlName="ptr_contact_email">
+                        <mat-hint>{{hint.ptr_contact_email}}</mat-hint>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button *ngIf="create" class="btn btn-outline-info"  (click)="createPartner()">Create</button>
+            <button *ngIf="!create" class="btn btn-outline-warning"  (click)="updatePartner()">Update</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+</div>

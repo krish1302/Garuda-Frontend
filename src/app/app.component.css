@@ -1,0 +1,51 @@
+.nav-bar{
+    position: relative;
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: 0.5vh solid rgb(94, 85, 85);
+    background-color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.7);
+    /* background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% ); */
+}
+.nav-bar>.nav-bar-item{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-bar>.nav-bar-item>label{
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: .1em;
+    font-weight: bolder;
+    font-family: 'Ramaraja', serif;
+}
+/* .nav-bar>.nav-bar-item>label:hover{
+    color: green;
+} */
+
+.router{
+    position: relative;
+    width: 100%;
+    height: 93vh;
+}
+
+.active{
+  background-color: rgb(94, 85, 85);
+  padding-top: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  transition: 0.5s all ease-in-out;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+
